@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/qiudb2021/ConcavePolygon/issues"
   },
-  "homepage": "https://github.com/qiudb2021/ConcavePolygon#readme"
+  "homepage": "https://github.com/qiudb2021/ConcavePolygon#readme",
+  "dependencies": {
+    "graphical": "^1.0.4"
+  }
 }
