@@ -31,7 +31,42 @@ function drawLine(from, to, color, width) {
     line.setWidth(width);
 }
 
+/**
+ * @param {{x:number, y:number}[][]} polys
+ * @returns {{x: number, y: number}}
+ */
+function findMinXY(polys) {
+    let minX = minY = Number.MAX_VALUE, p;
+    polys.forEach(pList => {
+        for (let i = 0; i < pList.length; i++) {
+            p = pList[i];
+            if (p.x < minX) minX = p.x;
+            if (p.y < minY) minY = p.y;
+        }
+    });
+    return {x: minX, y: minY};
+}
+
+/**
+ * @param {{x:number, y:number}[][]} polys
+ * @returns {{x: number, y: number}}
+ * 
+ */
+function findMaxXY(polys) {
+    let maxX = maxY = Number.MIN_VALUE, p;
+    polys.forEach(pList => {
+        for (let i = 0; i < pList.length; i++) {
+            p = pList[i];
+            if (p.x > maxX) maxX = p.x;
+            if (p.y > maxY) maxY = p.y;
+        }
+    });
+    return {x: maxX, y: maxY};
+}
+
 module.exports = {
     drawGrid: drawGrid,
     drawLine: drawLine,
+    findMaxXY: findMaxXY,
+    findMinXY: findMinXY,
 };

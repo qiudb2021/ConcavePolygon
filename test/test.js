@@ -32,4 +32,4 @@ polys.forEach(plist => {
     polygon.setColor("gray");
 })
 
-util.drawGrid({x:0, y:0}, {x:1000, y:1000})
+util.drawGrid(util.findMinXY(polys), util.findMaxXY(polys))
