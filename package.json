@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/qiudb2021/ConcavePolygon#readme",
   "dependencies": {
-    "graphical": "^1.0.4"
+    "graphical": "^1.0.4",
+    "vector": "0.0.4"
   }
 }

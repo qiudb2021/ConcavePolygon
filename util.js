@@ -1,4 +1,4 @@
-const {graphical, Rectangle, Polygon, Line} = require("graphical");
+const {graphical, Rectangle, Polygon, Line, Circle, Text} = require("graphical");
 
 /**
  * 
@@ -44,6 +44,35 @@ function drawPolySolid(poly, color) {
     let polygon = new Polygon();
     polygon.setPosList(poly);
     polygon.setColor(color );
+}
+
+/**
+ * @description 画圆
+ * @param {{x: number, y: number}} center 圆心
+ * @param {number} r 半径
+ * @param {string} color 填充颜色
+ */
+function drawCircle(center, r, color) {
+    let circle = new Circle();
+    circle.setPos(center.x, center.y);
+    circle.setRadius(r);
+    circle.setColor(color)
+}
+
+/**
+ * 描绘文本
+ * @param {{x:number, y:number}} p 文本起始位置
+ * @param {string} content 文本内容
+ */
+function drawText(p, content, color) {
+    let text = new Text();
+    text.setText(content);
+    text.setFont("bold 16px Arial");
+    text.setPos(p.x, p.y);
+    text.setLineHeight(10);
+    text.setColor(color)
+    text.setOutlineWidth(0);
+    text.setOutlineColor("black");
 }
 
 /**
@@ -98,6 +127,8 @@ module.exports = {
     drawGrid: drawGrid,
     drawPolyLine: drawPolyLine,
     drawPolySolid: drawPolySolid,
+    drawCircle: drawCircle,
+    drawText: drawText,
     drawLine: drawLine,
     findMaxXY: findMaxXY,
     findMinXY: findMinXY,
