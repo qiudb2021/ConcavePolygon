@@ -26,10 +26,9 @@ let polys = [
     ],
 ]
 
-polys.forEach(plist => {
-    let polygon = new Polygon();
-    polygon.setPosList(plist);
-    polygon.setColor("gray");
+polys.forEach(poly => {
+    util.drawPolySolid(poly, "green");
+    util.drawPolyLine(poly, "red", 2);
 })
 
-util.drawGrid(util.findMinXY(polys), util.findMaxXY(polys))
+util.drawGrid(util.findMinXY(polys), util.findMaxXY(polys), "gray")

@@ -2,10 +2,11 @@ const {graphical, Rectangle, Polygon, Line} = require("graphical");
 
 /**
  * 
- * @param {point} start 
- * @param {point} end 
+ * @param {{x:number, y: number}} start 
+ * @param {{x:number, y: number}} end 
+ * @param {string} color
  */
-function drawGrid(start, end) {
+function drawGrid(start, end, color) {
     console.log(start);
     console.log(end);
     let startX = start.x;
@@ -15,14 +16,45 @@ function drawGrid(start, end) {
     let endY = end.y;
 
     for (let x = startX; x < endX; x += 20) {
-        drawLine({x: x, y: 0}, {x: x, y: endY})
+        drawLine({x: x, y: 0}, {x: x, y: endY}, color, 1)
     }
     for (let y = startY; y < endY; y+=20) {
-        drawLine({x: 0, y: y}, {x: endX, y: y});
+        drawLine({x: 0, y: y}, {x: endX, y: y}, color, 1);
     }
 }
 
-/** */
+/**
+ * 用多边形的边描绘多边形
+ * @param {{x:number, y: number}[]} poly 多边形
+ * @param {string} color 边的颜色
+ * @param {number} 边的宽度
+ */
+function drawPolyLine(poly, color, width) {
+    for(let i = 0; i < poly.length; i++) {
+        let p1 = poly[i];
+        let p2 = poly[(i+1)%poly.length];
+        drawLine(p1, p2, color, width)
+    }
+}
+
+/**
+ * @description 描绘多边形
+ * @param {{x:number, y:number}[]} poly 多边形
+ * @param {string} color 填充颜色
+ */
+function drawPolySolid(poly, color) {
+    let polygon = new Polygon();
+    polygon.setPosList(poly);
+    polygon.setColor(color );
+}
+
+/**
+ * 
+ * @param {{x:number, y: number}} from 
+ * @param {{x:number, y: number}} to 
+ * @param {string} color 
+ * @param {number} width 
+ */
 function drawLine(from, to, color, width) {
     let line = new Line();
     line.setPos(from.x, from.y);
@@ -66,6 +98,8 @@ function findMaxXY(polys) {
 
 module.exports = {
     drawGrid: drawGrid,
+    drawPolyLine: drawPolyLine,
+    drawPolySolid: drawPolySolid,
     drawLine: drawLine,
     findMaxXY: findMaxXY,
     findMinXY: findMinXY,
