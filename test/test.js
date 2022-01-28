@@ -1,5 +1,6 @@
 const {graphical, Rectangle, Polygon} = require("graphical");
 const util = require("../util");
+const polygon2Convex = require("../polygon2Convex");
 
 graphical(8001);
 
@@ -27,7 +28,8 @@ let polys = [
 ]
 
 polys.forEach(poly => {
-    util.drawPolySolid(poly, "green");
+    console.log("%o 是否是凹多边形: %j", poly, polygon2Convex.isConcavePolygon(poly))
+    util.drawPolySolid(poly, "yellow");
     util.drawPolyLine(poly, "red", 2);
 })
 

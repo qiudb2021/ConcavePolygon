@@ -7,8 +7,6 @@ const {graphical, Rectangle, Polygon, Line} = require("graphical");
  * @param {string} color
  */
 function drawGrid(start, end, color) {
-    console.log(start);
-    console.log(end);
     let startX = start.x;
     let endX = end.x;
 
