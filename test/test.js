@@ -1,13 +1,35 @@
 const {graphical, Rectangle, Polygon} = require("graphical");
+const util = require("../util");
 
 graphical(8001);
 
-var rectangle = new Rectangle();
-rectangle.setPos(0, 0);
-rectangle.setColor('blue');
-rectangle.setSize(20, 20);
+let polys = [ 
+    [  
+        { x: 360, y: 240 },
+        { x: 436, y: 240 },
+        { x: 440, y: 262 },
+        { x: 436, y: 280 },
+        { x: 400, y: 280 },
+        { x: 400, y: 400 },
+        { x: 436, y: 400 },
+        { x: 440, y: 420 },
+        { x: 436, y: 440 },
+        { x: 400, y: 440 },
+        { x: 400, y: 560 },
+        { x: 516, y: 560 },
+        { x: 520, y: 580 },
+        { x: 516, y: 600 },
+        { x: 164, y: 600 },
+        { x: 160, y: 582 },
+        { x: 164, y: 560 },
+        { x: 360, y: 560 } 
+    ],
+]
 
-let plist = [{x:100, y:100}, {x:200, y:100}, {x:250,y:150}, {x:200, y:200}, {x:100, y:200}]
-let polygon = new Polygon();
-polygon.setPosList(plist);
-polygon.setColor("gray")
+polys.forEach(plist => {
+    let polygon = new Polygon();
+    polygon.setPosList(plist);
+    polygon.setColor("gray");
+})
+
+util.drawGrid({x:0, y:0}, {x:1000, y:1000})
