@@ -72,7 +72,7 @@ function drawText(p, content, color) {
     text.setLineHeight(10);
     text.setColor(color)
     text.setOutlineWidth(0);
-    text.setOutlineColor("black");
+    text.setOutlineColor(color);
 }
 
 /**

@@ -37,7 +37,10 @@ function isConcavePolygon(poly) {
  */
 function divideConcavePolygon(poly, results) {
     if (poly.length <= 3) return results;
-
+    // poly.reverse();
+    poly.forEach((p, index) => {
+        util.drawText(p, "p"+index, "red")
+    });
     let breakFlag = false;
 
     for (let index = 0; index < poly.length; index++) {
@@ -68,7 +71,6 @@ function divideConcavePolygon(poly, results) {
                 // 找到交点所在的边，即current和next组成的边
                 if (cp1 * cp2 < 0) {
                     let p = intersectPoint(p0, p1, current, next);
-
 
                     util.drawLine(p0, p1, "black", 5);
                     util.drawLine(current, next, "black", 10);
