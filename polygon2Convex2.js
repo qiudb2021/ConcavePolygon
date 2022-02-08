@@ -13,14 +13,15 @@ const util = require("./util");
  * @param {{x: number, y: number}[][]} results 分割后的多边形
  */
 function divideConcavePoly(poly, results) {
-    if (_divideConcavePoly(poly, results)) return true;
-    for (let i = 0; i < 2; i++) {
-        poly.unshift(poly.pop());
-        if (_divideConcavePoly(poly, results)) return true;
-    }
+    // if (_divideConcavePoly(poly, results)) return true;
+    // for (let i = 0; i < 2; i++) {
+    //     poly.unshift(poly.pop());
+    //     if (_divideConcavePoly(poly, results)) return true;
+    // }
     
-    console.log("切割失败")
-    return false;
+    // console.log("切割失败")
+    // return false;
+    _divideConcavePoly(poly, results)
 }
 
 
@@ -56,7 +57,6 @@ function _divideConcavePoly(poly, results) {
     poly = JSON.parse(JSON.stringify(poly))
     if (!poly.length) return true;
     if (poly.length < 4) {
-        console.log("result is %j", results)
         results.push(poly);
         return true;
     }
@@ -66,7 +66,6 @@ function _divideConcavePoly(poly, results) {
         return true;
     }
 
-    console.log(poly)
     let len = poly.length;
     let breakFlag = false;
     
@@ -77,28 +76,27 @@ function _divideConcavePoly(poly, results) {
     // 遍历所有顶点
     let i, j;
     for (i = 0; i < len - 2; i++) {
-        // if (i!=3) continue;
-        // if (i >0) continue
+        if (i!=2) continue;
         // 当前顶点
         let p0 = poly[i];
         // 下个顶点
         let p1 = poly[i+1];
         // 下下个顶点
         let p2 = poly[i+2];
-        
-        if (i == len - 2-1) {
-            console.log(p0, p1, p2)
-        }
+
+        console.log(p0, p1, p2)
         // 将当前顶点p0和下个顶点p1的连线向量作为x轴
         let vAxis = {x: p1.x-p0.x, y: p1.y-p0.y};
         // 当前顶点p0和下下个顶点p2的连线向量
-        // util.drawLine(p0, p1, "red", 5);
+        util.drawLine(p0, p1, "red", 5);
         let v = {x: p2.x-p0.x, y: p2.y-p0.y}
-        // util.drawLine(p0, p2, "yellow")
+        util.drawLine(p0, p2, "yellow")
+        console.log(crossProduct(vAxis, v))
         if (crossProduct(vAxis, v) < 0) {
-            // util.drawLine(p2, p0, "black", 2);
+            util.drawLine(p2, p0, "black", 2);
             // console.log("p0p2在p0p1的下方");
             for (j = i + 3; j < len; j++) {
+                console.log()
                 v = {x: poly[j].x - p0.x, y: poly[j].y - p0.y};
                 if (crossProduct(vAxis, v) > 0) {
                     console.log("分割点%j", poly[j]);
@@ -150,7 +148,6 @@ function sub(p1, p2) {
 }
 
 function crossProduct(v1, v2) {
-    console.log(v1.x*v2.y - v2.x*v1.y)
     return v1.x*v2.y - v2.x*v1.y
 }
 

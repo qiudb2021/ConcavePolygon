@@ -28,22 +28,18 @@ let polys = [
 
     [  
         { x: 360, y: 240 },
-        { x: 436, y: 240 },
-        { x: 440, y: 262 },
-        { x: 436, y: 280 },
+        { x: 440, y: 240 },
+        { x: 440, y: 280 },
         { x: 400, y: 280 },
         { x: 400, y: 400 },
-        { x: 436, y: 400 },
-        { x: 440, y: 420 },
-        { x: 436, y: 440 },
+        { x: 440, y: 400 },
+        { x: 440, y: 440 },
         { x: 400, y: 440 },
         { x: 400, y: 560 },
-        { x: 516, y: 560 },
-        { x: 520, y: 580 },
-        { x: 516, y: 600 },
-        { x: 164, y: 600 },
-        { x: 160, y: 582 },
-        { x: 164, y: 560 },
+        { x: 520, y: 560 },
+        { x: 520, y: 600 },
+        { x: 160, y: 600 },
+        { x: 160, y: 560 },
         { x: 360, y: 560 } 
     ],
 
@@ -67,7 +63,7 @@ let polys = [
 let results = [];
 polys.forEach(poly => {
         
-    console.log("%o 是否是凹多边形: %j", poly, polygon2Convex.isConcavePolygon(poly))
+    console.log("是否是凹多边形: %j", polygon2Convex.isConcavePolygon(poly))
     
     // polygon2Convex.divideConcavePolygon(JSON.parse(JSON.stringify(poly)));
     
