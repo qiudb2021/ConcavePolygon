@@ -134,8 +134,8 @@ function _divideConcavePoly(poly, results) {
     // util.drawPolySolid(poly2, "green")
     // console.log(poly);
     // console.log(poly2);
-    divideConcavePoly(poly, results);
-    divideConcavePoly(poly2, results);
+    // divideConcavePoly(poly, results);
+    // divideConcavePoly(poly2, results);
     return true;
 }
 

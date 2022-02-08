@@ -15,15 +15,36 @@ let polys = [
     //     {x:100, y:340}
     // ], 
 
-    [
-        {x: 200, y: 100},
-        {x: 240, y: 100},
-        {x: 240, y: 400},
-        {x: 380, y: 400},
-        {x: 380, y: 440},
-        {x: 100, y: 440},
-        {x: 100, y: 400},
-        {x: 200, y: 400}
+    // [
+    //     {x: 200, y: 100},
+    //     {x: 240, y: 100},
+    //     {x: 240, y: 400},
+    //     {x: 380, y: 400},
+    //     {x: 380, y: 440},
+    //     {x: 100, y: 440},
+    //     {x: 100, y: 400},
+    //     {x: 200, y: 400}
+    // ],
+
+    [  
+        { x: 360, y: 240 },
+        { x: 436, y: 240 },
+        { x: 440, y: 262 },
+        { x: 436, y: 280 },
+        { x: 400, y: 280 },
+        { x: 400, y: 400 },
+        { x: 436, y: 400 },
+        { x: 440, y: 420 },
+        { x: 436, y: 440 },
+        { x: 400, y: 440 },
+        { x: 400, y: 560 },
+        { x: 516, y: 560 },
+        { x: 520, y: 580 },
+        { x: 516, y: 600 },
+        { x: 164, y: 600 },
+        { x: 160, y: 582 },
+        { x: 164, y: 560 },
+        { x: 360, y: 560 } 
     ],
 
     // [ 
@@ -56,7 +77,14 @@ polys.forEach(poly => {
         util.drawText(p, "p"+index,"black")
     })
 
-    console.log("最终切割结果：%o", results)
+    console.log("最终切割结果：", results)
 })
+
+if (results.length) {
+    for(let i = 0; i < results.length; i++) {
+        if (i == 2)
+        util.drawPolySolid(results[i], "green")
+    }
+}
 
 util.drawGrid(util.findMinXY(polys), util.findMaxXY(polys), "gray")
